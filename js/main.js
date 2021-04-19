@@ -29,7 +29,12 @@ $(document).ready(function(){
 //Add Customer
 function addCustomer(){
 	var name = $('#name').val();
+	var adress = $('#adress').val();
 	var email = $('#email').val();
+	var postal_code = $('#postal_code').val();
+	var nip_number = $('#nip_number').val();
+	var phone_number = $('#phone_number').val();
+	var id_card = $('#id_card').val();
 	
 	var transaction = db.transaction(["customers"],"readwrite");
 	//Ask for ObjectStore
@@ -38,7 +43,12 @@ function addCustomer(){
 	//Define Customer
 	var customer = {
 		name: name,
-		email: email
+		adress: adress,
+		email: email,
+		postal_code: postal_code,
+		nip_number: nip_number,
+		phone_number: phone_number,
+		id_card: id_card,
 	}
 	
 	//Perform the Add
@@ -70,7 +80,12 @@ function showCustomers(e){
 			output += "<tr id='customer_"+cursor.value.id+"'>";
 			output += "<td>"+cursor.value.id+"</td>";
 			output += "<td><span class='cursor customer' contenteditable='true' data-field='name' data-id='"+cursor.value.id+"'>"+cursor.value.name+"</span></td>";
+			output += "<td><span class='cursor customer' contenteditable='true' data-field='adress' data-id='"+cursor.value.id+"'>"+cursor.value.adress+"</span></td>";
 			output += "<td><span class='cursor customer' contenteditable='true' data-field='email' data-id='"+cursor.value.id+"'>"+cursor.value.email+"</span></td>";
+			output += "<td><span class='cursor customer' contenteditable='true' data-field='postal_code' data-id='"+cursor.value.id+"'>"+cursor.value.postal_code+"</span></td>";
+			output += "<td><span class='cursor customer' contenteditable='true' data-field='nip_number' data-id='"+cursor.value.id+"'>"+cursor.value.nip_number+"</span></td>";
+			output += "<td><span class='cursor customer' contenteditable='true' data-field='phone_number' data-id='"+cursor.value.id+"'>"+cursor.value.phone_number+"</span></td>";
+			output += "<td><span class='cursor customer' contenteditable='true' data-field='id_card' data-id='"+cursor.value.id+"'>"+cursor.value.id_card+"</span></td>";
 			output += "<td><a onclick='removeCustomer("+cursor.value.id+")' href=''>Delete</a></td>";
 			output += "</tr>";
 			cursor.continue();
@@ -126,8 +141,16 @@ $('#customers').on('blur','.customer',function(){
 		var data = request.result;
 		if(field == 'name'){
 			data.name = newText;
-		} else if(field == 'email'){
+		} else if(field == 'adress'){
+			data.adress = newText;
+		}else if(field == 'email'){
 			data.email = newText;
+		}else if(field == 'postal_code'){
+			data.postal_code = newText;
+		}else if(field == 'nip_number'){
+			data.nip_number = newText;
+		}else if(field == 'id_card'){
+			data.id_card = newText;
 		}
 		
 		//Store Updated Text
