@@ -41,10 +41,15 @@
           <div class="table-responsive">
             <table id="myTable" class="table table-striped">
               <thead>
-                <tr>
+                <tr id='tableHeader'>
                   <th>#</th>
                   <th>Name</th>
+				  <th>Address</th>
                   <th>Email Address</th>
+				  <th>Zip Code</th>
+				  <th>Nip Number</th>
+				  <th>Phone Number</th>
+				  <th>ID Card</th>
                   <th></th>
                 </tr>
               </thead>
@@ -56,29 +61,7 @@
         </div>
       </div>
     </div>
-	<script>
-		function searchTable() {
-			var input, filter, found, table, tr, td, i, j;
-			input = document.getElementById("myInput");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("myTable");
-			tr = table.getElementsByTagName("tr");
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td");
-				for (j = 0; j < td.length; j++) {
-					if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-						found = true;
-					}
-				}
-				if (found) {
-					tr[i].style.display = "";
-					found = false;
-				} else {
-					tr[i].style.display = "none";
-				}
-			}
-		}
-	</script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
