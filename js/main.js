@@ -29,6 +29,7 @@ $(document).ready(function(){
 //Add Customer
 function addCustomer(){
 	var name = $('#name').val();
+	var city = $('#city').val();
 	var adress = $('#adress').val();
 	var email = $('#email').val();
 	var postal_code = $('#postal_code').val();
@@ -43,6 +44,7 @@ function addCustomer(){
 	//Define Customer
 	var customer = {
 		name: name,
+		city: city,
 		adress: adress,
 		email: email,
 		postal_code: postal_code,
@@ -78,8 +80,8 @@ function showCustomers(e){
 		var cursor = e.target.result;
 		if(cursor){
 			output += "<tr id='customer_"+cursor.value.id+"'>";
-			output += "<td>"+cursor.value.id+"</td>";
 			output += "<td><span class='cursor customer' contenteditable='true' data-field='name' data-id='"+cursor.value.id+"'>"+cursor.value.name+"</span></td>";
+			output += "<td><span class='cursor customer' contenteditable='true' data-field='city' data-id='"+cursor.value.id+"'>"+cursor.value.city+"</span></td>";
 			output += "<td><span class='cursor customer' contenteditable='true' data-field='adress' data-id='"+cursor.value.id+"'>"+cursor.value.adress+"</span></td>";
 			output += "<td><span class='cursor customer' contenteditable='true' data-field='email' data-id='"+cursor.value.id+"'>"+cursor.value.email+"</span></td>";
 			output += "<td><span class='cursor customer' contenteditable='true' data-field='postal_code' data-id='"+cursor.value.id+"'>"+cursor.value.postal_code+"</span></td>";
@@ -141,6 +143,8 @@ $('#customers').on('blur','.customer',function(){
 		var data = request.result;
 		if(field == 'name'){
 			data.name = newText;
+		}else if(field == 'city'){
+			data.city = newText;
 		} else if(field == 'adress'){
 			data.adress = newText;
 		}else if(field == 'email'){
